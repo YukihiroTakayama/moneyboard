@@ -81,6 +81,11 @@
 			<div class="nav-overlay nav-overlay-small uk-navbar-right">
 				<ul class="uk-navbar-nav">
 					<li>
+						<a class="uk-navbar-toggle uk-visible@l" href="javascript:void(0)" @click="importBlance">
+							<i class="mdi mdi-refresh" v-bind:class="{ 'mdi-spin': isImport }" />
+						</a>
+					</li>
+					<li>
 						<a class="uk-navbar-toggle uk-visible@l" href="javascript:void(0)" data-uk-toggle="target: .nav-overlay; animation: uk-animation-slide-top">
 							<i class="mdi mdi-magnify" />
 						</a>
@@ -457,7 +462,8 @@ export default {
 				code: 'es',
 				name: 'Spanish'
 			}
-		]
+		],
+		isImport: false
 	}),
 	computed: {
 		...mapState([
@@ -512,6 +518,14 @@ export default {
 		},
 		isActiveLang (code) {
 			return code === this.vxActiveLocale
+		},
+		importBlance () {
+			this.isImport = true
+			this.$axios.patch('/api/v1/balances/import').then(response => {
+	        this.isImport = false
+	    }).catch(error => {
+        this.isImport = false
+	    })
 		}
 	}
 }

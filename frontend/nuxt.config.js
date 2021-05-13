@@ -92,6 +92,7 @@ module.exports = {
 	modules: [
 		'@nuxtjs/axios',
 		'@nuxtjs/google-analytics',
+		'@nuxtjs/proxy',
 		[
 			'nuxt-i18n', {
 				defaultLocale: 'en',
@@ -130,6 +131,17 @@ module.exports = {
 		// disable for development
 		dev: process.env.NODE_ENV !== 'production'
 	},
+	axios: {
+    proxy: true,
+  },
+  proxy: {
+    '/api': {
+      target: 'http://backend:3000',
+      pathRewrite: {
+        '^/api': '/api'
+      }
+    },
+  },
 	/*
 	** The server Property
 	** https://nuxtjs.org/api/configuration-server

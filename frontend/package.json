@@ -28,6 +28,7 @@
 		"@mdi/font": "^4.9.95",
 		"@nuxtjs/axios": "^5.13.0",
 		"@nuxtjs/google-analytics": "^2.4.0",
+		"@nuxtjs/proxy": "^2.1.0",
 		"@nuxtjs/webpack-profile": "^0.1.0",
 		"@taoqf/quill-image-resize-module": "^3.0.1",
 		"accounting-big": "^1.0.1",
